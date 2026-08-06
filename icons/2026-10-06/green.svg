@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="57" fill="#efefef"/>
+  <rect width="512" height="185" rx="57" fill="#5fbb97"/>
+  <circle cx="376" cy="115" r="14" fill="#2f8867"/>
+  <circle cx="419" cy="115" r="14" fill="#2f8867"/>
+  <circle cx="462" cy="115" r="14" fill="#2f8867"/>
+  <text x="32" y="142" font-size="100" fill="#fff" font-family="-apple-system, 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">十月</text>
+  <text x="256" y="400" font-size="256" fill="#66757f" text-anchor="middle" font-family="-apple-system, sans-serif">06</text>
+  <text x="256" y="480" font-size="64" fill="#66757f" text-anchor="middle" font-family="-apple-system, 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">星期二</text>
+</svg>
