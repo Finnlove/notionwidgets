@@ -22,15 +22,15 @@ function svg(y, m, d, color) {
   const month = MONTHS[m - 1];
   const weekday = WEEKDAYS[new Date(y, m - 1, d).getDay()];
   const dots = [118, 256, 394]
-    .map((x) => `<circle cx="${x}" cy="108" r="28" fill="#FFFFFF"/><circle cx="${x}" cy="108" r="28" fill="none" stroke="${edge}" stroke-width="10"/>`)
+    .map((x) => `<circle cx="${x}" cy="112" r="22" fill="#FFFFFF"/><circle cx="${x}" cy="112" r="22" fill="none" stroke="${edge}" stroke-width="8"/>`)
     .join('');
   return `<svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 512 512">
   <rect x="24" y="24" width="464" height="464" rx="56" fill="#FFFFFF" stroke="#D8D5D0" stroke-width="3"/>
   <path d="M24 80 Q24 24 80 24 H432 Q488 24 488 80 V196 H24 Z" fill="${bar}"/>
   ${dots}
   <text x="256" y="330" font-size="150" fill="${edge}" text-anchor="middle" font-family="${FONT}">${d}</text>
-  <text x="256" y="380" font-size="30" fill="${edge}" text-anchor="middle" letter-spacing="2" font-family="${FONT}">${weekday}</text>
-  <text x="256" y="414" font-size="26" fill="${edge}" text-anchor="middle" letter-spacing="4" font-family="${FONT}">${month}</text>
+  <text x="256" y="380" font-size="36" fill="${edge}" text-anchor="middle" letter-spacing="2" font-family="${FONT}">${weekday}</text>
+  <text x="256" y="420" font-size="34" fill="${edge}" text-anchor="middle" letter-spacing="4" font-family="${FONT}">${month}</text>
 </svg>`;
 }
 
