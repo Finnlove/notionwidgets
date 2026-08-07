@@ -26,7 +26,7 @@ function svg(y, m, d, color) {
     .join('');
   return `<svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 512 512">
   <rect x="24" y="24" width="464" height="464" rx="56" fill="#FFFFFF" stroke="#D8D5D0" stroke-width="3"/>
-  <path d="M80 44 H432 C452 44 468 60 468 80 V196 H44 V80 C44 60 60 44 80 44 Z" fill="${bar}"/>
+  <path d="M24 80 Q24 24 80 24 H432 Q488 24 488 80 V196 H24 Z" fill="${bar}"/>
   ${dots}
   <text x="256" y="330" font-size="150" fill="${edge}" text-anchor="middle" font-family="${FONT}">${d}</text>
   <text x="256" y="380" font-size="30" fill="${edge}" text-anchor="middle" letter-spacing="2" font-family="${FONT}">${weekday}</text>
