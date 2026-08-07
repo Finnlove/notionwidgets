@@ -24,17 +24,13 @@ function svg(y, m, d, color) {
   const dots = [118, 256, 394]
     .map((x) => `<circle cx="${x}" cy="108" r="28" fill="#FFFFFF"/><circle cx="${x}" cy="108" r="28" fill="none" stroke="${edge}" stroke-width="10"/>`)
     .join('');
-  const lines = [218, 236, 254]
-    .map((ly) => `<rect x="191" y="${ly}" width="130" height="9" rx="4.5" fill="${edge}"/>`)
-    .join('');
   return `<svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 512 512">
   <rect x="24" y="24" width="464" height="464" rx="56" fill="#FFFFFF" stroke="#D8D5D0" stroke-width="3"/>
   <path d="M80 44 H432 C452 44 468 60 468 80 V196 H44 V80 C44 60 60 44 80 44 Z" fill="${bar}"/>
   ${dots}
-  ${lines}
-  <text x="256" y="392" font-size="150" fill="${edge}" text-anchor="middle" font-family="${FONT}">${d}</text>
-  <text x="256" y="438" font-size="30" fill="${edge}" text-anchor="middle" letter-spacing="2" font-family="${FONT}">${weekday}</text>
-  <text x="256" y="470" font-size="26" fill="${edge}" text-anchor="middle" letter-spacing="4" font-family="${FONT}">${month}</text>
+  <text x="256" y="330" font-size="150" fill="${edge}" text-anchor="middle" font-family="${FONT}">${d}</text>
+  <text x="256" y="380" font-size="30" fill="${edge}" text-anchor="middle" letter-spacing="2" font-family="${FONT}">${weekday}</text>
+  <text x="256" y="414" font-size="26" fill="${edge}" text-anchor="middle" letter-spacing="4" font-family="${FONT}">${month}</text>
 </svg>`;
 }
 
