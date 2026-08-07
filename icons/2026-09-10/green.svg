@@ -1,10 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 512 512">
-  <rect x="24" y="24" width="464" height="464" rx="56" fill="#FFFFFF"/>
+  <rect x="24" y="24" width="464" height="464" rx="56" fill="#FFFFFF" stroke="#D8D5D0" stroke-width="3"/>
   <path d="M80 44 H432 C452 44 468 60 468 80 V196 H44 V80 C44 60 60 44 80 44 Z" fill="#7FC8A9"/>
   <circle cx="118" cy="108" r="28" fill="#FFFFFF"/><circle cx="118" cy="108" r="28" fill="none" stroke="#3E6B5A" stroke-width="10"/><circle cx="256" cy="108" r="28" fill="#FFFFFF"/><circle cx="256" cy="108" r="28" fill="none" stroke="#3E6B5A" stroke-width="10"/><circle cx="394" cy="108" r="28" fill="#FFFFFF"/><circle cx="394" cy="108" r="28" fill="none" stroke="#3E6B5A" stroke-width="10"/>
-  <text x="256" y="182" font-size="34" font-weight="700" fill="#FFFFFF" text-anchor="middle" letter-spacing="4" font-family="-apple-system, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">九月</text>
-  <rect x="191" y="228" width="130" height="9" rx="4.5" fill="#3E6B5A"/><rect x="191" y="246" width="130" height="9" rx="4.5" fill="#3E6B5A"/><rect x="191" y="264" width="130" height="9" rx="4.5" fill="#3E6B5A"/>
-  <text x="256" y="434" font-size="180" font-weight="800" fill="#3E6B5A" text-anchor="middle" font-family="-apple-system, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">10</text>
-  <text x="256" y="466" font-size="30" font-weight="600" fill="#3E6B5A" text-anchor="middle" letter-spacing="2" font-family="-apple-system, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif">星期四</text>
-  <rect x="30" y="30" width="452" height="452" rx="50" fill="none" stroke="#3E6B5A" stroke-width="28"/>
+  <rect x="191" y="218" width="130" height="9" rx="4.5" fill="#3E6B5A"/><rect x="191" y="236" width="130" height="9" rx="4.5" fill="#3E6B5A"/><rect x="191" y="254" width="130" height="9" rx="4.5" fill="#3E6B5A"/>
+  <text x="256" y="392" font-size="150" fill="#3E6B5A" text-anchor="middle" font-family="'Microsoft YaHei', '微软雅黑', sans-serif">10</text>
+  <text x="256" y="438" font-size="30" fill="#3E6B5A" text-anchor="middle" letter-spacing="2" font-family="'Microsoft YaHei', '微软雅黑', sans-serif">星期四</text>
+  <text x="256" y="470" font-size="26" fill="#3E6B5A" text-anchor="middle" letter-spacing="4" font-family="'Microsoft YaHei', '微软雅黑', sans-serif">九月</text>
 </svg>

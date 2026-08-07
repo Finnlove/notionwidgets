@@ -12,7 +12,7 @@ const COLORS = {
   purple: { bar: '#B3A0D9', edge: '#4E3F66' }, // 灰雾紫
   gray: { bar: '#BDB7B0', edge: '#57534D' }, // 雾灰
 };
-const FONT = "-apple-system, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif";
+const FONT = "'Microsoft YaHei', '微软雅黑', sans-serif";
 
 const MONTHS = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
 const WEEKDAYS = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
@@ -24,18 +24,17 @@ function svg(y, m, d, color) {
   const dots = [118, 256, 394]
     .map((x) => `<circle cx="${x}" cy="108" r="28" fill="#FFFFFF"/><circle cx="${x}" cy="108" r="28" fill="none" stroke="${edge}" stroke-width="10"/>`)
     .join('');
-  const lines = [228, 246, 264]
+  const lines = [218, 236, 254]
     .map((ly) => `<rect x="191" y="${ly}" width="130" height="9" rx="4.5" fill="${edge}"/>`)
     .join('');
   return `<svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 512 512">
-  <rect x="24" y="24" width="464" height="464" rx="56" fill="#FFFFFF"/>
+  <rect x="24" y="24" width="464" height="464" rx="56" fill="#FFFFFF" stroke="#D8D5D0" stroke-width="3"/>
   <path d="M80 44 H432 C452 44 468 60 468 80 V196 H44 V80 C44 60 60 44 80 44 Z" fill="${bar}"/>
   ${dots}
-  <text x="256" y="182" font-size="34" font-weight="700" fill="#FFFFFF" text-anchor="middle" letter-spacing="4" font-family="${FONT}">${month}</text>
   ${lines}
-  <text x="256" y="434" font-size="180" font-weight="800" fill="${edge}" text-anchor="middle" font-family="${FONT}">${d}</text>
-  <text x="256" y="466" font-size="30" font-weight="600" fill="${edge}" text-anchor="middle" letter-spacing="2" font-family="${FONT}">${weekday}</text>
-  <rect x="30" y="30" width="452" height="452" rx="50" fill="none" stroke="${edge}" stroke-width="28"/>
+  <text x="256" y="392" font-size="150" fill="${edge}" text-anchor="middle" font-family="${FONT}">${d}</text>
+  <text x="256" y="438" font-size="30" fill="${edge}" text-anchor="middle" letter-spacing="2" font-family="${FONT}">${weekday}</text>
+  <text x="256" y="470" font-size="26" fill="${edge}" text-anchor="middle" letter-spacing="4" font-family="${FONT}">${month}</text>
 </svg>`;
 }
 
