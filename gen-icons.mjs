@@ -2,76 +2,40 @@
 // 用法: node gen-icons.mjs [天数] [颜色用逗号分隔]
 import { writeFileSync, mkdirSync } from 'node:fs';
 
-// Fluent Design 色板（低饱和莫兰迪/奶油调）：accent = 氛围光/强调色、dark = 同色系深一档（第二光晕）
-// 全局共享：暖灰渐变背景、深蓝灰墨色（日期主视觉）、半透明白磨砂卡片
+// 扁平贴纸风色板（复刻 svgrepo 日历：白卡 + 粗深色描边 + 彩色顶条 + 打孔圆点）
+// bar = 顶条色（浅彩）、edge = 描边/文字深色（每色同色系和谐深浅配）
 const COLORS = {
-  green: { accent: '#A3CFC5', dark: '#5E9E96' }, // 浅松石绿
-  red: { accent: '#DCACA8', dark: '#B97A78' }, // 灰豆沙红
-  blue: { accent: '#A5BFD9', dark: '#6E93B8' }, // 雾霾蓝
-  orange: { accent: '#E5C09A', dark: '#C29158' }, // 杏桃沙
-  purple: { accent: '#B6A8D8', dark: '#8D7FB8' }, // 灰雾紫
-  gray: { accent: '#B4BDC3', dark: '#7E8A92' }, // 中性雾灰
+  green: { bar: '#7FC8A9', edge: '#3E6B5A' }, // 薄荷绿
+  red: { bar: '#EC8BA5', edge: '#6B3A48' }, // 草莓粉
+  blue: { bar: '#93B8DC', edge: '#3E5670' }, // 雾霾蓝
+  orange: { bar: '#F0B27A', edge: '#6E4A28' }, // 杏桃橙
+  purple: { bar: '#B3A0D9', edge: '#4E3F66' }, // 灰雾紫
+  gray: { bar: '#BDB7B0', edge: '#57534D' }, // 雾灰
 };
-const BG_TOP = '#F6F4F0';
-const BG_BOTTOM = '#ECE8E1';
-const INK = '#2E3B45'; // 日期主视觉墨色
-const MUTED = 'rgba(46, 59, 69, 0.66)'; // 月份
-const FAINT = 'rgba(46, 59, 69, 0.5)'; // 星期
 const FONT = "-apple-system, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif";
 
 const MONTHS = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
 const WEEKDAYS = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
 
 function svg(y, m, d, color) {
-  const { accent, dark } = COLORS[color];
+  const { bar, edge } = COLORS[color];
   const month = MONTHS[m - 1];
   const weekday = WEEKDAYS[new Date(y, m - 1, d).getDay()];
+  const dots = [118, 256, 394]
+    .map((x) => `<circle cx="${x}" cy="108" r="28" fill="#FFFFFF"/><circle cx="${x}" cy="108" r="28" fill="none" stroke="${edge}" stroke-width="10"/>`)
+    .join('');
+  const lines = [228, 246, 264]
+    .map((ly) => `<rect x="191" y="${ly}" width="130" height="9" rx="4.5" fill="${edge}"/>`)
+    .join('');
   return `<svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 512 512">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="${BG_TOP}"/>
-      <stop offset="1" stop-color="${BG_BOTTOM}"/>
-    </linearGradient>
-    <radialGradient id="glowA" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="${accent}" stop-opacity="0.6"/>
-      <stop offset="0.55" stop-color="${accent}" stop-opacity="0.22"/>
-      <stop offset="1" stop-color="${accent}" stop-opacity="0"/>
-    </radialGradient>
-    <radialGradient id="glowB" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="${dark}" stop-opacity="0.4"/>
-      <stop offset="0.6" stop-color="${dark}" stop-opacity="0.14"/>
-      <stop offset="1" stop-color="${dark}" stop-opacity="0"/>
-    </radialGradient>
-    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="36"/>
-    </filter>
-    <filter id="frost" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="18"/>
-    </filter>
-    <filter id="grain" x="-50%" y="-50%" width="200%" height="200%">
-      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch" result="n"/>
-      <feColorMatrix in="n" type="matrix" values="0 0 0 0 0.04 0 0 0 0 0.05 0 0 0 0 0.07 0 0 0 0.05 0"/>
-    </filter>
-    <clipPath id="cardClip">
-      <rect x="16" y="16" width="480" height="480" rx="56"/>
-    </clipPath>
-  </defs>
-  <rect width="512" height="512" fill="url(#bg)"/>
-  <circle cx="104" cy="104" r="230" fill="url(#glowA)" filter="url(#soft)"/>
-  <circle cx="428" cy="436" r="250" fill="url(#glowB)" filter="url(#soft)"/>
-  <rect x="18" y="30" width="476" height="476" rx="54" fill="#3E4C55" opacity="0.16" filter="url(#soft)"/>
-  <g clip-path="url(#cardClip)" filter="url(#frost)">
-    <rect width="512" height="512" fill="url(#bg)"/>
-    <circle cx="104" cy="104" r="230" fill="url(#glowA)"/>
-    <circle cx="428" cy="436" r="250" fill="url(#glowB)"/>
-  </g>
-  <rect x="16" y="16" width="480" height="480" rx="56" fill="rgba(255,255,255,0.55)"/>
-  <rect x="16" y="16" width="480" height="480" rx="56" clip-path="url(#cardClip)" filter="url(#grain)"/>
-  <rect x="16.5" y="16.5" width="479" height="479" rx="55.5" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.5"/>
-  <rect x="234" y="108" width="44" height="4" rx="2" fill="${accent}" opacity="0.65"/>
-  <text x="256" y="90" font-size="40" font-weight="600" fill="${MUTED}" text-anchor="middle" letter-spacing="4" font-family="${FONT}">${month}</text>
-  <text x="256" y="440" font-size="250" font-weight="700" fill="${INK}" text-anchor="middle" font-family="${FONT}">${d}</text>
-  <text x="256" y="496" font-size="38" font-weight="500" fill="${FAINT}" text-anchor="middle" letter-spacing="2" font-family="${FONT}">${weekday}</text>
+  <rect x="24" y="24" width="464" height="464" rx="56" fill="#FFFFFF"/>
+  <path d="M80 44 H432 C452 44 468 60 468 80 V196 H44 V80 C44 60 60 44 80 44 Z" fill="${bar}"/>
+  ${dots}
+  <text x="256" y="182" font-size="34" font-weight="700" fill="#FFFFFF" text-anchor="middle" letter-spacing="4" font-family="${FONT}">${month}</text>
+  ${lines}
+  <text x="256" y="434" font-size="180" font-weight="800" fill="${edge}" text-anchor="middle" font-family="${FONT}">${d}</text>
+  <text x="256" y="466" font-size="30" font-weight="600" fill="${edge}" text-anchor="middle" letter-spacing="2" font-family="${FONT}">${weekday}</text>
+  <rect x="30" y="30" width="452" height="452" rx="50" fill="none" stroke="${edge}" stroke-width="28"/>
 </svg>`;
 }
 
